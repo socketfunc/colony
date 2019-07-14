@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package colony.worker;
+
+message InvokeRequest {
+  string namespace = 1;
+  string name      = 2;
+  bytes  values    = 3;
+}
+
+message InvokeResponse {
+  bytes result = 1;
+}
+
+service Worker {
+  rpc Invoke(InvokeRequest) returns (InvokeResponse) {}
+}
