@@ -28,48 +28,83 @@ gazelle_dependencies()
 go_repository(
     name = "com_github_davecgh_go_spew",
     importpath = "github.com/davecgh/go-spew",
-    sum = "h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=",
-    version = "v1.1.0",
+    tag = "v1.1.0",
+)
+
+go_repository(
+    name = "com_github_golang_mock",
+    importpath = "github.com/golang/mock",
+    tag = "v1.3.1",
 )
 
 go_repository(
     name = "com_github_pmezard_go_difflib",
     importpath = "github.com/pmezard/go-difflib",
-    sum = "h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=",
-    version = "v1.0.0",
+    tag = "v1.0.0",
 )
 
 go_repository(
     name = "com_github_stretchr_objx",
     importpath = "github.com/stretchr/objx",
-    sum = "h1:4G4v2dO3VZwixGIRoQ5Lfboy6nUhCyYzaqnIAPPhYs4=",
-    version = "v0.1.0",
+    tag = "v0.1.0",
 )
 
 go_repository(
     name = "com_github_stretchr_testify",
     importpath = "github.com/stretchr/testify",
-    sum = "h1:TivCn/peBQ7UY8ooIcPgZFpTNSz0Q2U6UrFlUfqbe0Q=",
-    version = "v1.3.0",
+    tag = "v1.3.0",
 )
 
 go_repository(
     name = "com_github_urfave_cli",
     importpath = "github.com/urfave/cli",
-    sum = "h1:fDqGv3UG/4jbVl/QkFwEdddtEDjh/5Ov6X+0B/3bPaw=",
-    version = "v1.20.0",
+    tag = "v1.20.0",
 )
 
 go_repository(
     name = "com_github_wasmerio_go_ext_wasm",
+    commit = "f819ba87ebd2",
     importpath = "github.com/wasmerio/go-ext-wasm",
-    sum = "h1:I+S5h33mthLWrsvipWXB0mpRrgp7v0m3AxnQvpyfHEM=",
-    version = "v0.0.0-20190708100532-f819ba87ebd2",
+)
+
+go_repository(
+    name = "org_golang_x_crypto",
+    commit = "c2843e01d9a2",
+    importpath = "golang.org/x/crypto",
+)
+
+go_repository(
+    name = "org_golang_x_net",
+    commit = "d8887717615a",
+    importpath = "golang.org/x/net",
+)
+
+go_repository(
+    name = "org_golang_x_sync",
+    commit = "112230192c58",
+    importpath = "golang.org/x/sync",
+)
+
+go_repository(
+    name = "org_golang_x_sys",
+    commit = "d0b11bdaac8a",
+    importpath = "golang.org/x/sys",
+)
+
+go_repository(
+    name = "org_golang_x_text",
+    importpath = "golang.org/x/text",
+    tag = "v0.3.0",
+)
+
+go_repository(
+    name = "org_golang_x_tools",
+    commit = "36563e24a262",
+    importpath = "golang.org/x/tools",
 )
 
 go_repository(
     name = "org_golang_x_xerrors",
+    commit = "3ee3066db522",
     importpath = "golang.org/x/xerrors",
-    sum = "h1:bhOzK9QyoD0ogCnFro1m2mz41+Ib0oOhfJnBp5MR4K4=",
-    version = "v0.0.0-20190513163551-3ee3066db522",
 )
