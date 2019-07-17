@@ -9,15 +9,51 @@ import (
 )
 
 func TestRuntime_Execute(t *testing.T) {
-	file, err := ioutil.ReadFile("testdata/sum.wasm")
+	t.Parallel()
+
+	file, err := ioutil.ReadFile("testdata/sample.wasm")
 	require.NoError(t, err)
 
-	runtime, err := New(file)
-	require.NoError(t, err)
-	defer runtime.Close()
+	tests := []struct {
+		title     string
+		name      string
+		args      []interface{}
+		expect    interface{}
+		expectErr error
+	}{
+		{
+			title: "add fn",
+			name:  "add",
+			args: []interface{}{
+				int32(20),
+				int32(80),
+			},
+			expect:    int32(100),
+			expectErr: nil,
+		},
+		{
+			title:     "hello fn",
+			name:      "hello",
+			args:      nil,
+			expect:    "Hello World",
+			expectErr: nil,
+		},
+	}
+	for _, testcase := range tests {
+		testcase := testcase
+		t.Run(testcase.title, func(t *testing.T) {
+			t.Parallel()
+			runtime, err := New(file)
+			require.NoError(t, err)
+			defer runtime.Close()
 
-	args := []interface{}{int32(20), int32(80)}
-	ret, err := runtime.Execute("sum", args)
-	assert.NoError(t, err)
-	assert.Equal(t, int32(100), ret)
+			ret, err := runtime.Execute(testcase.name, testcase.args)
+			if testcase.expectErr == nil {
+				require.NoError(t, err)
+			} else {
+				require.Error(t, err)
+			}
+			assert.Equal(t, testcase.expect, ret)
+		})
+	}
 }

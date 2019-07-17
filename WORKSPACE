@@ -28,7 +28,7 @@ gazelle_dependencies()
 go_repository(
     name = "com_github_davecgh_go_spew",
     importpath = "github.com/davecgh/go-spew",
-    tag = "v1.1.0",
+    tag = "v1.1.1",
 )
 
 go_repository(
@@ -46,7 +46,7 @@ go_repository(
 go_repository(
     name = "com_github_stretchr_objx",
     importpath = "github.com/stretchr/objx",
-    tag = "v0.1.0",
+    tag = "v0.2.0",
 )
 
 go_repository(
@@ -63,7 +63,7 @@ go_repository(
 
 go_repository(
     name = "com_github_wasmerio_go_ext_wasm",
-    commit = "f819ba87ebd2",
+    commit = "605a12aad995",
     importpath = "github.com/wasmerio/go-ext-wasm",
 )
 
@@ -107,4 +107,10 @@ go_repository(
     name = "org_golang_x_xerrors",
     commit = "3ee3066db522",
     importpath = "golang.org/x/xerrors",
+)
+
+go_repository(
+    name = "com_github_vmihailenco_msgpack",
+    importpath = "github.com/vmihailenco/msgpack",
+    tag = "v4.0.4",
 )

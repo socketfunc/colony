@@ -3,11 +3,19 @@ package runtime
 //go:generate mkdir -p mock
 //go:generate mockgen -source=runtime.go -package=mock -destination=mock/runtime.go
 import (
+	"strings"
+
 	wasm "github.com/wasmerio/go-ext-wasm/wasmer"
 	errors "golang.org/x/xerrors"
 )
 
+const (
+	eof         byte = 0
+	defaultSize      = 128
+)
+
 // Runtime WebAssembly runtime
+// not thread safe and cannot be used in parallel across goroutines.
 type Runtime interface {
 	Close()
 	Execute(name string, args []interface{}) (interface{}, error)
@@ -43,7 +51,20 @@ func (r *runtime) Execute(name string, args []interface{}) (interface{}, error) 
 	}
 	switch ret.GetType() {
 	case wasm.TypeI32:
-		return ret.ToI32(), nil
+		ptr := ret.ToI32()
+		data := r.instance.Memory.Data()
+		buf := new(strings.Builder)
+		buf.Grow(defaultSize)
+		for _, b := range data[ptr:] {
+			if b == eof {
+				break
+			}
+			buf.WriteByte(b)
+		}
+		if buf.Len() > 0 {
+			return buf.String(), nil
+		}
+		return ptr, nil
 	case wasm.TypeI64:
 		return ret.ToI64(), nil
 	case wasm.TypeF32:
