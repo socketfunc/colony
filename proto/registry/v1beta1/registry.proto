@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package colony.registry.v1beta1;
+
+option csharp_namespace = "Colony.Registry.V1Beta1";
+option go_package = "registryv1beta1";
+option java_multiple_files = true;
+option java_outer_classname = "RegistryProto";
+option java_package = "com.colony.registry.v1beta1";
+option objc_class_prefix = "CRX";
+option php_namespace = "Colony\\Registry\\V1Beta1";
+
+message DownloadRequest {
+  string file = 1;
+}
+
+message DownloadResponse {
+  bytes data = 1;
+}
+
+service Registry {
+  rpc Download(DownloadRequest) returns (stream DownloadResponse);
+}

@@ -1,0 +1,22 @@
+excludes:
+  - wasm
+
+protoc:
+  version: 3.8.0
+
+lint:
+  group: uber2
+
+create:
+  packages:
+    - directory: proto
+      name: colony
+
+generate:
+  go_options:
+    import_path: github.com/socketfunc/colony/proto
+  plugins:
+    - name: go
+      type: go
+      flags: plugins=grpc
+      output: .

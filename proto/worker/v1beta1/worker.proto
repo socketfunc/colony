@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package colony.worker.v1beta1;
+
+option csharp_namespace = "Colony.Worker.V1Beta1";
+option go_package = "workerv1beta1";
+option java_multiple_files = true;
+option java_outer_classname = "WorkerProto";
+option java_package = "com.colony.worker.v1beta1";
+option objc_class_prefix = "CWX";
+option php_namespace = "Colony\\Worker\\V1Beta1";
+
+message InvokeRequest {
+  string namespace = 1;
+  string name = 2;
+  bytes values = 3;
+}
+
+message InvokeResponse {
+  bytes result = 1;
+}
+
+service Worker {
+  rpc Invoke(InvokeRequest) returns (InvokeResponse);
+}
