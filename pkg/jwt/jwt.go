@@ -1,5 +1,7 @@
 package jwt
 
+//go:generate mkdir -p mock
+//go:generate mockgen -source=jwt.go -package=mock -destination=mock/jwt.go
 import (
 	"github.com/gbrlsnchs/jwt/v3"
 )
