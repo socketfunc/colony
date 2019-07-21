@@ -13,7 +13,7 @@ option php_namespace = "Colony\\Worker\\V1Beta1";
 message InvokeRequest {
   string namespace = 1;
   string name = 2;
-  bytes values = 3;
+  bytes args = 3;
 }
 
 message InvokeResponse {

@@ -3,6 +3,9 @@ excludes:
 
 protoc:
   version: 3.8.0
+  includes:
+    - .
+    - ../../..
 
 lint:
   group: uber2
@@ -16,7 +19,7 @@ generate:
   go_options:
     import_path: github.com/socketfunc/colony/proto
   plugins:
-    - name: go
-      type: go
+    - name: gogo
+      type: gogo
       flags: plugins=grpc
       output: .

@@ -1,0 +1,13 @@
+version: v1beta1
+metadata:
+  namespace: default
+  name: colony
+spec:
+  functions:
+    - name: test_func
+      repository: file:///tmp/test.wasm
+      resources:
+        requests:
+          timeout: 10s
+        limits:
+          requests: 1000
