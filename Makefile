@@ -11,5 +11,4 @@ test:
 	bazel test //...
 
 protoc:
-	prototool format -f -w
 	prototool generate

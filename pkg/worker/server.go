@@ -6,6 +6,8 @@ import (
 	"github.com/socketfunc/colony/pkg/config"
 	"github.com/socketfunc/colony/pkg/runtime"
 	"github.com/socketfunc/colony/pkg/storage"
+	apiv1beta1 "github.com/socketfunc/colony/proto/api/v1beta1"
+	configpb "github.com/socketfunc/colony/proto/config"
 	v1beta1 "github.com/socketfunc/colony/proto/worker/v1beta1"
 	"github.com/vmihailenco/msgpack"
 	"google.golang.org/grpc"
@@ -13,58 +15,42 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-func RegisterWorkerServer(srv *grpc.Server) {
-	s := NewServer()
-	// TODO: sample data
-	ss := s.(*server)
-	cfg := &config.Config{
-		Version: "v1beta1",
-		Metadata: map[string]string{
-			"metadata": "default",
-		},
-		Spec: &config.Spec{
-			Functions: []*config.Function{
-				{
-					Name:       "add",
-					Repository: "file:///tmp/sample.wasm",
-					Resources:  &config.Resources{},
-				},
-				{
-					Name:       "hello",
-					Repository: "file:///tmp/sample.wasm",
-					Resources:  &config.Resources{},
-				},
-			},
-		},
-	}
-	ss.configStore.Save("default", cfg)
-	v1beta1.RegisterWorkerServer(srv, s)
+func RegisterWorkerServer(srv *grpc.Server, params *ServerParams) {
+	v1beta1.RegisterWorkerServer(srv, NewServer(params))
 }
 
 type server struct {
-	storage     storage.Storage
-	configStore *config.Store
+	apiClient apiv1beta1.ApiServiceClient
+	storage   storage.Storage
 }
 
-func NewServer() v1beta1.WorkerServer {
+type ServerParams struct {
+	ApiClient apiv1beta1.ApiServiceClient
+}
+
+func NewServer(params *ServerParams) v1beta1.WorkerServer {
 	return &server{
-		storage:     storage.New(),
-		configStore: &config.Store{},
+		apiClient: params.ApiClient,
+		storage:   storage.New(),
 	}
 }
 
 func (s *server) Invoke(ctx context.Context, req *v1beta1.InvokeRequest) (*v1beta1.InvokeResponse, error) {
-	cfg := s.configStore.Get(req.Namespace)
-	if cfg == nil {
-		return nil, status.Error(codes.NotFound, "")
+	in := &apiv1beta1.GetConfigRequest{
+		Namespace: req.Namespace,
 	}
+	out, err := s.apiClient.GetConfig(ctx, in)
+	if err != nil {
+		return nil, err
+	}
+	cfg := out.Config
 
 	var args []interface{}
 	if err := msgpack.Unmarshal(req.Args, &args); err != nil {
 		return nil, status.Error(codes.InvalidArgument, err.Error())
 	}
 
-	fn := cfg.Spec.GetFunction(req.Name)
+	fn := config.Functions(cfg.Spec.Functions).Get(req.Name)
 	if fn == nil {
 		return nil, status.Error(codes.NotFound, "")
 	}
@@ -83,7 +69,7 @@ func (s *server) Invoke(ctx context.Context, req *v1beta1.InvokeRequest) (*v1bet
 	return resp, nil
 }
 
-func (s *server) invoke(ctx context.Context, fn *config.Function, args []interface{}) (interface{}, error) {
+func (s *server) invoke(ctx context.Context, fn *configpb.Function, args []interface{}) (interface{}, error) {
 	file, err := s.storage.Download(fn.Repository)
 	if err != nil {
 		return nil, err

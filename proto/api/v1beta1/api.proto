@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package colony.api.v1beta1;
+
+option go_package = "github.com/socketfunc/colony/proto/api/v1beta1;apiv1beta1";
+
+import "github.com/socketfunc/colony/proto/config/config.proto";
+
+message GetConfigRequest {
+  string namespace = 1;
+}
+
+message GetConfigResponse {
+  colony.config.Config config = 1;
+}
+
+message SaveConfigRequest {
+  colony.config.Config config = 1;
+}
+
+message SaveConfigResponse {}
+
+service ApiService {
+  rpc GetConfig(GetConfigRequest) returns (GetConfigResponse);
+  rpc SaveConfig(SaveConfigRequest) returns (SaveConfigResponse);
+}
