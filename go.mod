@@ -5,7 +5,7 @@ go 1.12
 require (
 	github.com/ReneKroon/ttlcache v0.0.0-20190617123854-823b876cf6d1
 	github.com/gbrlsnchs/jwt/v3 v3.0.0-beta.1
-	github.com/gogo/protobuf v1.2.1
+	github.com/gogo/protobuf v1.3.1
 	github.com/golang/mock v1.3.1
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/magiconair/properties v1.8.1
