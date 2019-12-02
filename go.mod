@@ -22,7 +22,7 @@ require (
 	golang.org/x/xerrors v0.0.0-20190513163551-3ee3066db522
 	google.golang.org/appengine v1.6.1 // indirect
 	google.golang.org/genproto v0.0.0-20190716160619-c506a9f90610 // indirect
-	google.golang.org/grpc v1.22.0
+	google.golang.org/grpc v1.25.1
 	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
 	gopkg.in/yaml.v2 v2.2.2
 )
