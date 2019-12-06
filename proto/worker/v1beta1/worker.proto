@@ -2,12 +2,12 @@ syntax = "proto3";
 
 package colony.worker.v1beta1;
 
-option go_package = "github.com/socketfunc/colony/proto/worker/v1beta1;workerv1beta1";
+option go_package = "github.com/socketfunc/colony/proto/worker/v1beta1;worker";
 
 message InvokeRequest {
   string namespace = 1;
-  string name = 2;
-  bytes args = 3;
+  string name      = 2;
+  bytes  args      = 3;
 }
 
 message InvokeResponse {

@@ -5,14 +5,14 @@ package colony.config;
 option go_package = "github.com/socketfunc/colony/proto/config";
 
 message Config {
-  string version = 1;
+  string   version  = 1;
   Metadata metadata = 2;
-  Spec Spec = 3;
+  Spec     Spec     = 3;
 }
 
 message Metadata {
-  string name = 1;
-  string namespace = 2;
+  string name                = 1;
+  string namespace           = 2;
   map<string, string> labels = 3;
 }
 
@@ -21,14 +21,14 @@ message Spec {
 }
 
 message Function {
-  string name = 1;
-  string repository = 2;
-  Resources resources = 3;
+  string    name       = 1;
+  string    repository = 2;
+  Resources resources  = 3;
 }
 
 message Resources {
   Requests requests = 1;
-  Limits limits = 2;
+  Limits   limits   = 2;
 }
 
 message Requests {

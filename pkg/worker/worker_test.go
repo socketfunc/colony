@@ -8,7 +8,6 @@ import (
 	storageMock "github.com/socketfunc/colony/pkg/storage/mock"
 	apiv1betaMock "github.com/socketfunc/colony/proto/api/v1beta1/mock"
 	workerv1beta1 "github.com/socketfunc/colony/proto/worker/v1beta1"
-	"github.com/vmihailenco/msgpack"
 	"google.golang.org/grpc/codes"
 )
 
@@ -44,12 +43,4 @@ func newWorkerServer(ctrl *gomock.Controller, setup setupFunc) workerv1beta1.Wor
 		Storage:   mocks.storage,
 	}
 	return NewServer(params)
-}
-
-func encode(data interface{}) []byte {
-	res, err := msgpack.Marshal(data)
-	if err != nil {
-		panic(err)
-	}
-	return res
 }

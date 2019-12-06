@@ -18,6 +18,8 @@
 /bazel-*
 
 # Rust template
-Cargo.lock
 **/*.rs.bk
 /wasm/*/target/
+
+!/docker/db/data/.gitkeep
+/docker/db/data

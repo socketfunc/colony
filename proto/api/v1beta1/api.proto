@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package colony.api.v1beta1;
 
-option go_package = "github.com/socketfunc/colony/proto/api/v1beta1;apiv1beta1";
+option go_package = "github.com/socketfunc/colony/proto/api/v1beta1;api";
 
 import "github.com/socketfunc/colony/proto/config/config.proto";
 
@@ -20,7 +20,22 @@ message SaveConfigRequest {
 
 message SaveConfigResponse {}
 
+message GetPublicKeysRequest {
+  string namespace = 1;
+}
+
+message GetPublicKeysResponse {
+  repeated PublicKey keys = 1;
+}
+
+message PublicKey {
+  string kind       = 1;
+  bytes  key        = 2;
+  int64  expired_at = 3;
+}
+
 service ApiService {
   rpc GetConfig(GetConfigRequest) returns (GetConfigResponse);
   rpc SaveConfig(SaveConfigRequest) returns (SaveConfigResponse);
+  rpc GetPublicKeys(GetPublicKeysRequest) returns (GetPublicKeysResponse);
 }

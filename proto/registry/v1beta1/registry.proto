@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package colony.registry.v1beta1;
 
-option go_package = "github.com/socketfunc/colony/proto/registry/v1beta1;registryv1beta1";
+option go_package = "github.com/socketfunc/colony/proto/registry/v1beta1;registry";
 
 message DownloadRequest {
   string file = 1;

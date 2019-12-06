@@ -31,7 +31,7 @@ func (m *Config) Reset()         { *m = Config{} }
 func (m *Config) String() string { return proto.CompactTextString(m) }
 func (*Config) ProtoMessage()    {}
 func (*Config) Descriptor() ([]byte, []int) {
-	return fileDescriptor_config_5c8026477ccacdc5, []int{0}
+	return fileDescriptor_config_d8765cf624d5280f, []int{0}
 }
 func (m *Config) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Config.Unmarshal(m, b)
@@ -85,7 +85,7 @@ func (m *Metadata) Reset()         { *m = Metadata{} }
 func (m *Metadata) String() string { return proto.CompactTextString(m) }
 func (*Metadata) ProtoMessage()    {}
 func (*Metadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_config_5c8026477ccacdc5, []int{1}
+	return fileDescriptor_config_d8765cf624d5280f, []int{1}
 }
 func (m *Metadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Metadata.Unmarshal(m, b)
@@ -137,7 +137,7 @@ func (m *Spec) Reset()         { *m = Spec{} }
 func (m *Spec) String() string { return proto.CompactTextString(m) }
 func (*Spec) ProtoMessage()    {}
 func (*Spec) Descriptor() ([]byte, []int) {
-	return fileDescriptor_config_5c8026477ccacdc5, []int{2}
+	return fileDescriptor_config_d8765cf624d5280f, []int{2}
 }
 func (m *Spec) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Spec.Unmarshal(m, b)
@@ -177,7 +177,7 @@ func (m *Function) Reset()         { *m = Function{} }
 func (m *Function) String() string { return proto.CompactTextString(m) }
 func (*Function) ProtoMessage()    {}
 func (*Function) Descriptor() ([]byte, []int) {
-	return fileDescriptor_config_5c8026477ccacdc5, []int{3}
+	return fileDescriptor_config_d8765cf624d5280f, []int{3}
 }
 func (m *Function) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Function.Unmarshal(m, b)
@@ -230,7 +230,7 @@ func (m *Resources) Reset()         { *m = Resources{} }
 func (m *Resources) String() string { return proto.CompactTextString(m) }
 func (*Resources) ProtoMessage()    {}
 func (*Resources) Descriptor() ([]byte, []int) {
-	return fileDescriptor_config_5c8026477ccacdc5, []int{4}
+	return fileDescriptor_config_d8765cf624d5280f, []int{4}
 }
 func (m *Resources) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Resources.Unmarshal(m, b)
@@ -275,7 +275,7 @@ func (m *Requests) Reset()         { *m = Requests{} }
 func (m *Requests) String() string { return proto.CompactTextString(m) }
 func (*Requests) ProtoMessage()    {}
 func (*Requests) Descriptor() ([]byte, []int) {
-	return fileDescriptor_config_5c8026477ccacdc5, []int{5}
+	return fileDescriptor_config_d8765cf624d5280f, []int{5}
 }
 func (m *Requests) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Requests.Unmarshal(m, b)
@@ -313,7 +313,7 @@ func (m *Limits) Reset()         { *m = Limits{} }
 func (m *Limits) String() string { return proto.CompactTextString(m) }
 func (*Limits) ProtoMessage()    {}
 func (*Limits) Descriptor() ([]byte, []int) {
-	return fileDescriptor_config_5c8026477ccacdc5, []int{6}
+	return fileDescriptor_config_d8765cf624d5280f, []int{6}
 }
 func (m *Limits) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Limits.Unmarshal(m, b)
@@ -351,9 +351,9 @@ func init() {
 	proto.RegisterType((*Limits)(nil), "colony.config.Limits")
 }
 
-func init() { proto.RegisterFile("proto/config/config.proto", fileDescriptor_config_5c8026477ccacdc5) }
+func init() { proto.RegisterFile("proto/config/config.proto", fileDescriptor_config_d8765cf624d5280f) }
 
-var fileDescriptor_config_5c8026477ccacdc5 = []byte{
+var fileDescriptor_config_d8765cf624d5280f = []byte{
 	// 402 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x52, 0x5d, 0x6b, 0xdb, 0x30,
 	0x14, 0xc5, 0x71, 0xe2, 0xd9, 0x37, 0x0c, 0x86, 0xb6, 0x31, 0x2f, 0x8c, 0x11, 0xbc, 0xc0, 0x32,

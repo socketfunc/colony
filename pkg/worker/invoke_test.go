@@ -10,6 +10,7 @@ import (
 	"github.com/socketfunc/colony/proto/config"
 	workerv1beta1 "github.com/socketfunc/colony/proto/worker/v1beta1"
 	"github.com/stretchr/testify/assert"
+	"github.com/vmihailenco/msgpack"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -77,4 +78,12 @@ func TestServer_Invoke(t *testing.T) {
 			assert.Equal(t, testcase.expect.resp, resp)
 		})
 	}
+}
+
+func encode(data interface{}) []byte {
+	res, err := msgpack.Marshal(data)
+	if err != nil {
+		panic(err)
+	}
+	return res
 }
