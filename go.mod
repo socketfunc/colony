@@ -6,7 +6,7 @@ require (
 	github.com/ReneKroon/ttlcache v0.0.0-20190617123854-823b876cf6d1
 	github.com/gbrlsnchs/jwt/v3 v3.0.0-rc.1
 	github.com/gogo/protobuf v1.3.1
-	github.com/golang/mock v1.3.1
+	github.com/golang/mock v1.4.0
 	github.com/spf13/cobra v0.0.5
 	github.com/stretchr/testify v1.4.0
 	github.com/vmihailenco/msgpack v4.0.4+incompatible
